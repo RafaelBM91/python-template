@@ -1,0 +1,14 @@
+version: '2'
+services:
+  python_compose_jenkins:
+    build: .
+    image: ${NAME_IMAGE}
+    ports:
+    - ${PORTS}
+    expose:
+    - ${EXPOSE}
+    command: sh start.sh
+    volumes:
+    - ./src:/var/src
+    env_file:
+    - .env
