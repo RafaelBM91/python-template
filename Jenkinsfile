@@ -1,20 +1,5 @@
-pipeline {
-    agent {
-        docker {
-            image 'node:latest' 
-            args '-p 3000:3000' 
-        }
-    }
-    stages {
-        stage('Build') { 
-            steps {
-                sh 'make build'
-            }
-        }
-        stage('Up') { 
-            steps {
-                sh 'make up'
-            }
-        }
+node {
+    stage (‘Prepare environment’) {
+        git branch: 'master', url: 'git@github.com:RafaelBM91/python-template.git'
     }
 }
